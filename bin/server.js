@@ -1,10 +1,6 @@
-'use strict'
-
+const app = require('../src/app');
+const debug = require('debug')('balta:server');
 const http = require('http');
-const debug = require('debug')('nodestr:server');
-const express = require('express'); // vem da pasta modules
-
-const app = express();
 
 // seta a porta
 // process.env.PORT vem do azure
@@ -13,22 +9,13 @@ app.set('port', port);
 
 // cria o servidor
 const server = http.createServer(app);
-const router = express.Router();
-
-// define uma rota raiz
-var route =  router.get('/', (req, res, next) => {
-    res.status(200).send({
-        title: "Node Store API",
-        version : "0.0.1"
-    });
-});
-app.use('/', route);
 
 // servidor fica escutando requisições
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 console.log('Executando na porta: ' + port);
+
 
 // normalizando a porta da aplicação
 function normalizePort(val) {

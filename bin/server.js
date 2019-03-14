@@ -14,7 +14,7 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log('Executando na porta: ' + port);
+console.log('Executando na porta ' + port);
 
 
 // normalizando a porta da aplicação
